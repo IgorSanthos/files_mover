@@ -25,10 +25,9 @@ try:
         try:
             if caminho_guias.is_dir():
                 for arquivo in caminho_guias.glob('*'):
-                    if 'guias' in arquivo.name:
-                        caminho_destino_arquivo = caminho_destino2 / arquivo.name
-                        shutil.move(arquivo, caminho_destino_arquivo)
-                        print(f"Arquivo {arquivo.name} movido de {caminho_guias} para {caminho_destino_arquivo}")
+                    caminho_destino_arquivo = caminho_destino2 / arquivo.name
+                    shutil.move(arquivo, caminho_destino_arquivo)
+                    print(f"Arquivo {arquivo.name} movido de {caminho_guias} para {caminho_destino_arquivo}")
             else:
                 print(None, "ERRO", f"Diretório de origem {caminho_guias} não encontrado. Movimento não realizado.")
         except Exception as error:
@@ -38,7 +37,7 @@ try:
         try:
             if caminho_nfts.is_dir():
                 for arquivo in caminho_nfts.glob('*'):
-                    if 'nfstomados' in arquivo.name:
+                    if 'nfs' in arquivo.name:
                         caminho_destino_arquivo = caminho_destino / 'Serviços Tomados' / arquivo.name
                         shutil.move(arquivo, caminho_destino_arquivo)
                         print(f"Arquivo {arquivo.name} movido de {caminho_nfts} para {caminho_destino_arquivo}")
@@ -69,6 +68,7 @@ try:
 
 except Exception as error:
     QMessageBox.critical(None, "ERRO", f"Ocorreu um erro: {error}")
+    print(None, "ERRO", f"Ocorreu um erro: {error}")
 
 # Executar o loop de eventos do PyQt
 app.exec_()
